@@ -1,0 +1,32 @@
+{
+  "name": "motia-server",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "postinstall": "motia install",
+    "dev": "motia dev",
+    "start": "motia start ",
+    "generate-types": "motia generate-types",
+    "build": "motia build",
+    "clean": "rm -rf dist node_modules python_modules .motia .mermaid"
+  },
+  "keywords": [
+    "motia"
+  ],
+  "dependencies": {
+    "@motiadev/adapter-bullmq-events": "^0.17.6-beta.187",
+    "@motiadev/core": "^0.17.6-beta.187",
+    "@motiadev/plugin-bullmq": "^0.17.6-beta.187",
+    "@motiadev/plugin-endpoint": "^0.17.6-beta.187",
+    "@motiadev/plugin-logs": "^0.17.6-beta.187",
+    "@motiadev/plugin-observability": "^0.17.6-beta.187",
+    "@motiadev/plugin-states": "^0.17.6-beta.187",
+    "axios": "^1.13.2",
+    "colyseus.js": "^0.16.22",
+    "dotenv": "^17.2.3",
+    "mongoose": "^9.0.1",
+    "motia": "^0.17.6-beta.187",
+    "svix": "^1.82.0",
+    "zod": "^4.1.12"
+  }
+}
