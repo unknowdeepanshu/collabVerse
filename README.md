@@ -31,7 +31,7 @@ Users can create or join rooms, interact with others through chat and movement, 
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/unknowdeepanshu/collabVerse.git
+https://github.com/unknowdeepanshu/collabVerse.git
 cd collabVerse
 ```
 
