@@ -36,20 +36,15 @@ export default config({
     port: 6379,
   },
 
-  // --- ADD STREAM AUTH HERE ---
   streamAuth: {
-    // Generates internal types for your stream files
     contextSchema: z.toJSONSchema(streamAuthContextSchema),
     
     authenticate: async (request) => {
-      // Extract token from Sec-WebSocket-Protocol or URL search params
       const url = new URL(request.url || '', process.env.FRONTEND_URL || 'http://localhost');
       const token = url.searchParams.get('authToken');
 
-      if (!token) return null; // Anonymous client
+      if (!token) return null; 
 
-      // Replace this with your actual database or session lookup
-      // Example: const session = await UserSession.findOne({ token });
       if (token === "valid-secret-token") {
         return { 
           userId: "user_123", 
