@@ -5,6 +5,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export default function JoinRoom(props){
+    
+    const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "/api";
     const [isModalOpen, setIsModalOpen] = useState(false);
     const { setRoomid } = useContext(RoomContext);
     console.log("Joinroom props:", props);
@@ -14,7 +16,7 @@ export default function JoinRoom(props){
         e.preventDefault();
         const roomId=e.target[0].value;
         const userId = localStorage.getItem("myUserId");
-        const response = await axios.post('/api/joinroom', { roomID: roomId, userId: userId });
+        const response = await axios.post(`${API_BASE_URL}/joinroom`, { roomID: roomId, userId: userId });
         console.log("Join room response:", response.data);
         if (response.status === 200) {
             setRoomid(roomId);

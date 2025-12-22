@@ -10,6 +10,9 @@ export default function RoomRow(props) {
   const navigate = useNavigate();
   const { room, index ,trigger,setTrigger} = props;
 
+  
+  const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "/api";
+  
   async function handleJoin(e) {
     const roomId = e.currentTarget.dataset.value;
     setRoomid(roomId);
@@ -27,7 +30,7 @@ export default function RoomRow(props) {
     console.log("trigger value in roomrow before delete:", trigger);
     setTrigger(true);
     const userId = localStorage.getItem("myUserId");
-    const response = await axios.post('/api/Deleterooms', { roomID: roomID, userId: userId });
+    const response = await axios.post(`${API_BASE_URL}/Deleterooms`, { roomID: roomID, userId: userId });
     if(!response.status===201){
       setTrigger(false);
     }

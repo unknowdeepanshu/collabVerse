@@ -7,6 +7,8 @@ export default function RoomList(props) {
   const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState(false);
   
+  const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "/api";
+
   const { function: trigger, sefunction: setTrigger } = props;
 
   const fetchUserRooms = useCallback(async () => {
@@ -15,7 +17,7 @@ export default function RoomList(props) {
 
     setLoading(true);
     try {
-      const response = await axios.get('/api/rooms/my-rooms', { 
+      const response = await axios.get(`${API_BASE_URL}/rooms/my-rooms`, { 
         params: { userId: userId } 
       });
       

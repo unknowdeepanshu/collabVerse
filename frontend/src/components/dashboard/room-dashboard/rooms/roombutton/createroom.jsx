@@ -5,6 +5,8 @@ import axios from "axios";
 import RoomContext from "../../../../../context/roomContext";
 
 export default function Createroom(props){
+    
+    const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "/api";
     console.log("createroom props:", props);
     const {setTrigger,trigger}=props;
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,7 +22,7 @@ export default function Createroom(props){
             userId:id,
         }
         try{
-            const response=await axios.post('/api/Createrooms',payload);
+            const response=await axios.post(`${API_BASE_URL}/Createrooms`,payload);
             console.log("response from server:",response.data);
             const table=response.data.table;
             setRooms(table);

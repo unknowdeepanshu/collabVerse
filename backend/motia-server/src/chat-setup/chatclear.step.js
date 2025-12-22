@@ -4,13 +4,13 @@ export const config = {
     name: 'clearChatRoom',
     type: 'api',
     method: 'DELETE',
-    path: '/api/chat/room/:roomId',
+    path: '/api/chat/Clear/',
     description: 'Clear all messages from a chat room',
     emits: [],
 };
 
 export const handler = async (req, ctx) => {
-    const { roomId } = req.pathParams;
+    const roomId ="global"
     const { logger, streams } = ctx;
 
     try {

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 export default function Avatar() {
   const [username, setUsername] = useState("");
   const [isRegistered, setIsRegistered] = useState(false);
-
+  const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "/api";
   // 1. Check localStorage once when the component mounts
   useEffect(() => {
     const savedName = localStorage.getItem("myUsername");
@@ -21,7 +21,7 @@ export default function Avatar() {
     if (!inputName.trim()) return;
 
     try {
-      const response = await axios.post("/api/user/register", {
+      const response = await axios.post(`${API_BASE_URL}/user/register`, {
         username: inputName,
       });
 

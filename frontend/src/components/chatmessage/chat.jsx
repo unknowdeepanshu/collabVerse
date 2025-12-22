@@ -4,6 +4,8 @@ import Message from "./meesage";
 export default function ChatMessage({ roomId = "global", username = "Player" }) {
     // 1. Hook into Motia Stream (Real-time updates)
     
+    const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "/api";
+
     const [chatinput, setchatInput] = useState("");
     const [aiinput, setaiInput] = useState("");
     const [chatRoom, setChatRoom] = useState(true);
@@ -15,7 +17,7 @@ export default function ChatMessage({ roomId = "global", username = "Player" }) 
 
         try {
             username = localStorage.getItem("myUsername") || "Player";
-            await axios.post("/api/chat", {
+            await axios.post(`${API_BASE_URL}/chat`, {
                 roomId: roomId,
                 message: chatinput,
                 sender: username,
@@ -26,6 +28,13 @@ export default function ChatMessage({ roomId = "global", username = "Player" }) 
             console.error("Failed to send message:", err);
         }
     }
+    async function handleClearChat() {
+        try {
+            await axios.delete(`${API_BASE_URL}/chat/Clear/` )
+            console.log("Chat cleared successfully");
+        } catch (err) {
+            console.error("Failed to clear chat:", err);
+        }}
 
     return (
         <div>
@@ -62,6 +71,9 @@ export default function ChatMessage({ roomId = "global", username = "Player" }) 
                         </button>
                     </form>
                 </div>
+                <button onClick={handleClearChat} className="px-4 py-2 rounded-xl border border-neutral-600 bg-white hover:bg-gray-100">
+                    clear chat
+                </button>
 
                 {/* AI Agent Room (Placeholder for now) */}
                 <div className="bg-white p-8 rounded-lg w-[500px]" style={chatRoom ? { display: "none" } : {}}>
