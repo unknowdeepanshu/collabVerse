@@ -6,7 +6,8 @@ Users can create or join rooms, interact with others through chat and movement, 
 
 🚀 Built with modern web technologies, CollabVerse focuses on real-time interaction, smooth user experience, and a flexible architecture for future expansion.
 
-**Status:** 🚧 In Development
+**Status:** 🚧 In Development 
+
 **Goal:** Real-time collaboration, multiplayer interaction, and immersive shared spaces
 
 ---
